@@ -1,5 +1,5 @@
 NAME
-    CGI::AppBuilder::Log - gather and write log entries.
+    CGI::AppBuilder::Log - Gather and write log entries for CGI applications
 
 SYNOPSIS
         my $self = bless {}, "main";

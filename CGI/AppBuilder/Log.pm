@@ -16,11 +16,11 @@ our %EXPORT_TAGS = (
   all      => [@EXPORT_OK],
   log      => [qw(start_log end_log)], 
 );
-$CGI::AppBuilder::Log::VERSION = 0.11;
+$CGI::AppBuilder::Log::VERSION = 0.12;
 
 =head1 NAME
 
-CGI::AppBuilder::Log - gather and write log entries. 
+CGI::AppBuilder::Log - Gather and write log entries for CGI applications
 
 =head1 SYNOPSIS
 
@@ -113,8 +113,8 @@ sub start_log {
         } 
         $cns .= lc ",$cn2";
     }
-    ${$ar}{user} = `/usr/ucb/whoami`; 
-    ${$ar}{args} = (exists $ENV{QUERY_STRING})?
+    $ar->{user} = ($^O =~ /(linux|solaris)/i) ? `/usr/ucb/whoami` : ""; 
+    $ar->{args} = (exists $ENV{QUERY_STRING})?
                    $ENV{QUERY_STRING}:$arg;  
     my ($tx1, $txt); 
     my $fh_dtl = new IO::File ">> $dtl"; 
@@ -196,6 +196,8 @@ sub end_log {
     undef $fh1;   # close breif  file hanlder
     undef $fh2;   # close detail file handler
 }
+
+1;
 
 =head1 CODING HISTORY
 

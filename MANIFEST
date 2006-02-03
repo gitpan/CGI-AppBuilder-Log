@@ -1,6 +1,6 @@
-Log.pm
+CGI/AppBuilder/Log.pm
+t/ab_Log.t
 test.pl
 Makefile.PL
-t/Log.t
-CGI-AppBuilder-Log-0.11.readme
+CGI-AppBuilder-Log-0.12.readme
 README
